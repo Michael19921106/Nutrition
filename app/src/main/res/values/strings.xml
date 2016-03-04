@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Nutrition</string>
+    <string name="tab_material">Material</string>
+    <string name="tab_news">News</string>
+    <string name="setting_private">Private Setting</string>
+    <string name="personal_material">Personal Data</string>
+    <string name="password_setting">Password Setting</string>
+    <string name="log_in_setting">Login Setting</string>
+    <string name="remember_password">Remember Password</string>
+    <string name="auto_login">Auto Login</string>
+    <string name="about_product">About</string>
+    <string name="product_intro">Introduction</string>
+    <string name="product_feedback">Feedback</string>
+    <string name="product_cache_path">Cache Path</string>
+    <string name="product_auto_update">Auto Update</string>
+    <string name="product_publish">Publish</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="setting">Setting</string>
+    <string name="detail">Detail</string>
+    <string name="filtrate">Filtrate</string>
+    <string name="save">Save</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+</resources>
