@@ -13,6 +13,14 @@ import com.zxxk.demo.nutrition.ui.fragment.BaseFragment;
 import com.zxxk.demo.nutrition.ui.fragment.NavigationFragment;
 import com.zxxk.demo.nutrition.ui.fragment.NewsFragment;
 
+/** 
+ * Tag:
+ * Author: Michael(michael.hms@outlook.com) 
+ * Date: 2016/3/7 
+ * Time: 15:53
+ * Description: 
+ */  
+
 public class MainActivity extends BaseAppCompatActivity implements NavigationDrawerCallbacks{
     public static final String TAG = MainActivity.class.getSimpleName();
     private NavigationFragment navigationFragment;
