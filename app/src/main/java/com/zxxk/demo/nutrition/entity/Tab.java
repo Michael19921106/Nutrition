@@ -8,13 +8,33 @@ import com.google.gson.annotations.Expose;
  * Time: 15:37
  * Description:
  */
-public class Tab extends BaseEntity {
+public class Tab {
     @Expose
     private String id;
     @Expose
     private String name;
     @Expose
     private String order;
+    @Expose
+    private String statuscode;
+    @Expose
+    private ResultEntity result;
+
+    public void setStatuscode(String statuscode) {
+        this.statuscode = statuscode;
+    }
+
+    public void setResult(ResultEntity result) {
+        this.result = result;
+    }
+
+    public String getStatuscode() {
+        return statuscode;
+    }
+
+    public ResultEntity getResult() {
+        return result;
+    }
 
     public String getId() {
         return id;

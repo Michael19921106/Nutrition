@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.zxxk.demo.nutrition.NutritionApp;
 import com.zxxk.demo.nutrition.R;
@@ -103,7 +104,7 @@ public class NavigationFragment extends Fragment implements NavigationDrawerCall
      * 获取网络数据
      */
     public void refresh() {
-        NutritionApp.getNetRespository().getTabs("5f64bd60f6aa47d192ac69a6bf147e33-1453172272663", new NetRespository.CallBack<Tabs>() {
+        NutritionApp.getNetRespository().getTabs(new NetRespository.CallBack<Tabs>() {
             @Override
             public void success(Tabs tabs, String url) {
                 mTabs = tabs.getTabs();
@@ -114,6 +115,7 @@ public class NavigationFragment extends Fragment implements NavigationDrawerCall
             @Override
             public void failure(Exception e, String url) {
                 e.printStackTrace();
+                Toast.makeText(getActivity(),"加载失败",Toast.LENGTH_SHORT).show();
             }
         });
     }

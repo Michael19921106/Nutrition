@@ -1,5 +1,6 @@
 package com.zxxk.demo.nutrition.respository;
 
+import com.zxxk.demo.nutrition.entity.Tab;
 import com.zxxk.demo.nutrition.entity.Tabs;
 
 
@@ -10,7 +11,12 @@ import com.zxxk.demo.nutrition.entity.Tabs;
  * Description:
  */
 public interface NetRespository {
-    void getTabs(String session_key, CallBack<Tabs> callback);
+    void getTabs( CallBack<Tabs> callback);
+
+    void getTabDataByType(String type,CallBack<Tab> callback);
+
+    void getMoreTabDataById(String type,String articleId,CallBack<Tab> callBack);
+
     interface CallBack<T>{
         /**成功**/
         void success(T t, String url);
