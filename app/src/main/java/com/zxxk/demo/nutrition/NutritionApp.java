@@ -3,6 +3,11 @@ package com.zxxk.demo.nutrition;
 import android.app.Application;
 import android.content.Context;
 
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.zxxk.demo.nutrition.common.Constant;
 import com.zxxk.demo.nutrition.respository.NetRespository;
 import com.zxxk.demo.nutrition.respository.NetRespositoryImpl;
 
@@ -20,6 +25,8 @@ public class NutritionApp extends Application {
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
+
+        initImageLoader(getApplicationContext());
     }
     public static Context getContext(){
         return context;
@@ -30,5 +37,18 @@ public class NutritionApp extends Application {
         }
         return respository;
     }
+
+    private void initImageLoader(final Context context) {
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
+                .threadPriority(Thread.NORM_PRIORITY - 2)
+                .denyCacheImageMultipleSizesInMemory()
+                .diskCacheFileNameGenerator(new Md5FileNameGenerator())
+                .diskCacheSize(Constant.IMAGE_CACHE_SIZE) // 50 Mb
+                .tasksProcessingOrder(QueueProcessingType.LIFO)
+//                .writeDebugLogs() // Remove for release app
+                .build();
+        ImageLoader.getInstance().init(config);
+    }
+
 
 }

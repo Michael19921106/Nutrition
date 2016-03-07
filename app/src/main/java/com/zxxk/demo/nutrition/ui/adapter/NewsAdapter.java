@@ -22,6 +22,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public void setTab(Tab tab) {
         this.tab = tab;
+        notifyDataSetChanged();
     }
 
     public NewsAdapter() {
@@ -34,8 +35,14 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
+    @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder viewHolder = null;
+
         viewHolder = new NewsHolder(UIUtils.inflate(R.layout.card_view_news_item, parent));
         return viewHolder;
     }

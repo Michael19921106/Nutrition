@@ -67,18 +67,6 @@ public class MainActivity extends BaseAppCompatActivity implements NavigationDra
         restoreActionBar();
     }
 
-//    private int getId(Fragment fragment) {
-//        return ((BaseFragment) fragment).getThemeNumber();
-//    }
-
-//    private String getTag(int position){
-//        switch (position){
-//            case 0:
-//                return null;
-//            default:
-//                return NewsFragment.TAG + position;
-//        }
-//    }
 
     private String getTag(int position) {
        return NewsFragment.TAG + position;

@@ -31,8 +31,7 @@ public class BaseFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_THEME_NUMBER, position);
         bundle.putString(ARG_THEME_ID, sectionId);
-        BaseFragment fragment = null;
-            fragment = new NewsFragment();
+        BaseFragment fragment = new NewsFragment();
         fragment.setArguments(bundle);
         return fragment;
     }

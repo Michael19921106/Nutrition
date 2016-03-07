@@ -83,7 +83,7 @@ public class NewsFragment extends BaseFragment {
         swipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
-                if (isDataLoaded) {
+                if (!isDataLoaded) {
                     swipeRefreshLayout.setRefreshing(true);
                     refresh();
                 }
@@ -110,7 +110,6 @@ public class NewsFragment extends BaseFragment {
                     }
                     mAdapter.setTab(tab);
                 }
-
             }
 
             @Override
