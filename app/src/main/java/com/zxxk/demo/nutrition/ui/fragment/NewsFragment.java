@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.zxxk.demo.nutrition.NutritionApp;
 import com.zxxk.demo.nutrition.R;
 import com.zxxk.demo.nutrition.entity.Tab;
-import com.zxxk.demo.nutrition.respository.NetRespository;
+import com.zxxk.demo.nutrition.respository.Respository;
 import com.zxxk.demo.nutrition.ui.adapter.NewsAdapter;
 import com.zxxk.demo.nutrition.ui.widget.LoadMoreRecyclerView;
 
@@ -98,9 +98,9 @@ public class NewsFragment extends BaseFragment {
 
     private void refresh() {
         isDataLoaded = false;
-        NutritionApp.getNetRespository().getTabDataByType(mTabId, new NetRespository.CallBack<Tab>() {
+        NutritionApp.getRespository().getTabDataByType(mTabId, new Respository.Callback<Tab>() {
             @Override
-            public void success(Tab tab, String url) {
+            public void success(Tab tab, boolean outdate) {
                 isDataLoaded = true;
                 swipeRefreshLayout.setRefreshing(false);
                 if (tab != null && mAdapter != null) {
@@ -113,8 +113,7 @@ public class NewsFragment extends BaseFragment {
             }
 
             @Override
-            public void failure(Exception e, String url) {
-
+            public void failure(Exception e) {
                 isDataLoaded = false;
                 swipeRefreshLayout.setRefreshing(false);
                 Toast.makeText(getActivity(), "加载失败", Toast.LENGTH_SHORT).show();
@@ -123,10 +122,11 @@ public class NewsFragment extends BaseFragment {
         });
     }
 
+
     private void loadMore(){
-        NutritionApp.getNetRespository().getMoreTabDataById(mTabId, mLastNewsId, new NetRespository.CallBack<Tab>() {
+        NutritionApp.getRespository().getMoreTabDataById(mTabId, mLastNewsId, new Respository.Callback<Tab>() {
             @Override
-            public void success(Tab tab, String url) {
+            public void success(Tab tab, boolean outdate) {
                 recyclerView.setLoadingMore(false);
                 if (tab !=null && mAdapter !=null){
                     if (tab.getResult().getArticles().size() > 0){
@@ -138,7 +138,7 @@ public class NewsFragment extends BaseFragment {
             }
 
             @Override
-            public void failure(Exception e, String url) {
+            public void failure(Exception e) {
                 recyclerView.setLoadingMore(false);
                 e.printStackTrace();
                 Toast.makeText(getActivity(),"加载失败",Toast.LENGTH_SHORT).show();

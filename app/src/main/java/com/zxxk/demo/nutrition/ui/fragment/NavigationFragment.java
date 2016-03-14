@@ -22,7 +22,7 @@ import com.zxxk.demo.nutrition.R;
 import com.zxxk.demo.nutrition.entity.Tab;
 import com.zxxk.demo.nutrition.entity.Tabs;
 import com.zxxk.demo.nutrition.interfaces.NavigationDrawerCallbacks;
-import com.zxxk.demo.nutrition.respository.NetRespository;
+import com.zxxk.demo.nutrition.respository.Respository;
 import com.zxxk.demo.nutrition.ui.adapter.NavigationFragmentAdapter;
 import com.zxxk.demo.nutrition.utils.SharedPreferenceUtils;
 import com.zxxk.demo.nutrition.utils.UIUtils;
@@ -104,18 +104,18 @@ public class NavigationFragment extends Fragment implements NavigationDrawerCall
      * 获取网络数据
      */
     public void refresh() {
-        NutritionApp.getNetRespository().getTabs(new NetRespository.CallBack<Tabs>() {
+        NutritionApp.getRespository().getTabs(new Respository.Callback<Tabs>() {
             @Override
-            public void success(Tabs tabs, String url) {
+            public void success(Tabs tabs, boolean outdate) {
                 mTabs = tabs.getTabs();
                 mAdapter.setThemes(mTabs);
                 recyclerView.setAdapter(mAdapter);
             }
 
             @Override
-            public void failure(Exception e, String url) {
+            public void failure(Exception e) {
                 e.printStackTrace();
-                Toast.makeText(getActivity(),"加载失败",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "加载失败", Toast.LENGTH_SHORT).show();
             }
         });
     }

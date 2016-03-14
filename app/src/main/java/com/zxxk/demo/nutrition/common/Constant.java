@@ -9,7 +9,7 @@ package com.zxxk.demo.nutrition.common;
 public class Constant {
     public static final String CHARSET = "UTF-8";
 
-    public static final String DATABASE_NAME = "DailyDB";
+    public static final String DATABASE_NAME = "NewsDB";
     public static final int DATABASE_VERSION = 1;
 
     public static final int IMAGE_CACHE_SIZE = 50 * 1024 * 1024;
