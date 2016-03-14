@@ -38,7 +38,7 @@ public class NutritionApp extends Application {
         return respository;
     }
 
-    private void initImageLoader(final Context context) {
+    public static void initImageLoader(final Context context) {
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
                 .threadPriority(Thread.NORM_PRIORITY - 2)
                 .denyCacheImageMultipleSizesInMemory()
@@ -47,8 +47,6 @@ public class NutritionApp extends Application {
                 .tasksProcessingOrder(QueueProcessingType.LIFO)
 //                .writeDebugLogs() // Remove for release app
                 .build();
-        ImageLoader.getInstance().init(config);
+        ImageLoader.getInstance().init(config.createDefault(context));
     }
-
-
 }

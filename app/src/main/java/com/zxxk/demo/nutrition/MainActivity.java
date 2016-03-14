@@ -16,11 +16,10 @@ import com.zxxk.demo.nutrition.ui.fragment.NewsFragment;
 /** 
  * Tag:
  * Author: Michael(michael.hms@outlook.com) 
- * Date: 2016/3/7 
+ * Date: 2016/3/7
  * Time: 15:53
  * Description: 
- */  
-
+ */
 public class MainActivity extends BaseAppCompatActivity implements NavigationDrawerCallbacks{
     public static final String TAG = MainActivity.class.getSimpleName();
     private NavigationFragment navigationFragment;
@@ -34,6 +33,7 @@ public class MainActivity extends BaseAppCompatActivity implements NavigationDra
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        NutritionApp.initImageLoader(MainActivity.this.getApplicationContext());
         setupDrawer();
         if (savedInstanceState ==null){
             navigationFragment.selectItem(NavigationFragment.getDefaultNavDrawerItem());

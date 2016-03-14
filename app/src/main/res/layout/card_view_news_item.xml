@@ -63,9 +63,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignTop="@id/info_read_tv"
-                    android:layout_marginRight="60dp"
                     android:singleLine="true"
+                    android:gravity="right"
                     android:textColor="#808080"
+                    android:layout_toRightOf="@+id/info_read_tv"
                     android:textSize="12sp" />
             </RelativeLayout>
         </RelativeLayout>

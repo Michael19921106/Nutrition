@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zxxk.demo.nutrition.R;
 import com.zxxk.demo.nutrition.entity.ArticlesEntity;
 import com.zxxk.demo.nutrition.utils.DateUtil;
@@ -60,7 +61,7 @@ public class NewsHolder extends RecyclerView.ViewHolder implements View.OnClickL
     public void bindNewsView(ArticlesEntity entity) {
         this.articlesEntity = entity;
         if (articlesEntity.getPic()!=null){
-//            ImageLoader.getInstance().displayImage(articlesEntity.getPic(), ivIcon, displayImageOptions);
+            ImageLoader.getInstance().displayImage(articlesEntity.getPic(), ivIcon, displayImageOptions);
         }
 
         SpannableString title = new SpannableString(articlesEntity.getTitle());
