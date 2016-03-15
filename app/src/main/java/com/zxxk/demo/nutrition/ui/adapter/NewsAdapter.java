@@ -1,6 +1,7 @@
 package com.zxxk.demo.nutrition.ui.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.zxxk.demo.nutrition.R;
@@ -24,9 +25,13 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.tab = tab;
         notifyDataSetChanged();
     }
-
+    private CollectionStarListner starListner;
     public NewsAdapter() {
 
+    }
+
+    public NewsAdapter(CollectionStarListner starListner) {
+        this.starListner = starListner;
     }
 
     public void appendNews(List<ArticlesEntity> mList) {
@@ -42,15 +47,22 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder viewHolder = null;
-
         viewHolder = new NewsHolder(UIUtils.inflate(R.layout.card_view_news_item, parent));
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         NewsHolder newsHolder = (NewsHolder) holder;
         newsHolder.bindNewsView(tab.getResult().getArticles().get(position));
+        ((NewsHolder) holder).starView.setStarred(false);
+        ((NewsHolder) holder).starView.clearAnimation();
+        ((NewsHolder) holder).starView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                starListner.onStarClicked(position);
+            }
+        });
     }
 
     @Override
@@ -64,5 +76,9 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
         }
         return count;
+    }
+
+    public interface CollectionStarListner {
+         void onStarClicked(int position);
     }
 }

@@ -61,6 +61,6 @@ public class NutritionApp extends Application {
                 .tasksProcessingOrder(QueueProcessingType.LIFO)
 //                .writeDebugLogs() // Remove for release app
                 .build();
-        ImageLoader.getInstance().init(config.createDefault(context));
+        ImageLoader.getInstance().init(config);
     }
 }

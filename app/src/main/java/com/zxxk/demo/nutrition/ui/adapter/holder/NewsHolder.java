@@ -14,6 +14,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zxxk.demo.nutrition.R;
 import com.zxxk.demo.nutrition.entity.ArticlesEntity;
+import com.zxxk.demo.nutrition.ui.widget.StarView;
 import com.zxxk.demo.nutrition.utils.DateUtil;
 
 /**
@@ -27,6 +28,7 @@ public class NewsHolder extends RecyclerView.ViewHolder implements View.OnClickL
     private CardView cardView;
     ImageView ivIcon;
     TextView tvTitle, tvTime, tvRead;
+    public StarView starView;
     private ArticlesEntity articlesEntity;
 
     public NewsHolder(View itemView) {
@@ -44,6 +46,7 @@ public class NewsHolder extends RecyclerView.ViewHolder implements View.OnClickL
         tvRead = (TextView) itemView.findViewById(R.id.info_read_tv);
         tvTime = (TextView) itemView.findViewById(R.id.info_time_tv);
         ivIcon = (ImageView) itemView.findViewById(R.id.info_icon_iv);
+        starView = (StarView) itemView.findViewById(R.id.collect_star_view);
 
         cardView.setOnClickListener(this);
 

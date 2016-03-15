@@ -23,7 +23,7 @@ import com.zxxk.demo.nutrition.ui.widget.LoadMoreRecyclerView;
  * Time: 17:32
  * Description:
  */
-public class NewsFragment extends BaseFragment {
+public class NewsFragment extends BaseFragment implements NewsAdapter.CollectionStarListner {
     private SwipeRefreshLayout swipeRefreshLayout;
     private LoadMoreRecyclerView recyclerView;
     private String mTabId;
@@ -37,7 +37,7 @@ public class NewsFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null) {
-            mAdapter = new NewsAdapter();
+            mAdapter = new NewsAdapter(this);
         }
     }
 
@@ -116,7 +116,7 @@ public class NewsFragment extends BaseFragment {
             public void failure(Exception e) {
                 isDataLoaded = false;
                 swipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(getActivity(), "加载失败", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "加载失败_refresh", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
         });
@@ -141,8 +141,13 @@ public class NewsFragment extends BaseFragment {
             public void failure(Exception e) {
                 recyclerView.setLoadingMore(false);
                 e.printStackTrace();
-                Toast.makeText(getActivity(),"加载失败",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"加载失败_loadMore",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onStarClicked(int position) {
+
     }
 }

@@ -75,7 +75,7 @@ public class CacheRespositoryImpl implements CacheRespository {
     }
 
     private Exception getException(Class clazz){
-        return new Exception(clazz.getSimpleName() + "cache not fount");
+        return new Exception(clazz.getSimpleName() + " cache not fount");
     }
 
     /**
