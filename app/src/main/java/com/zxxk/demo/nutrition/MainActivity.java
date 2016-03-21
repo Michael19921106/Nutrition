@@ -57,7 +57,7 @@ public class MainActivity extends BaseAppCompatActivity implements NavigationDra
 
         Fragment lastFragment = fm.findFragmentByTag(getTag(lastPosition));
         if (lastFragment != null) {
-            ft.detach(lastFragment);
+            ft.hide(lastFragment);
         }
 
         Fragment fragment = fm.findFragmentByTag(getTag(position));
@@ -65,7 +65,7 @@ public class MainActivity extends BaseAppCompatActivity implements NavigationDra
             fragment = getFragmentItem(position);
             ft.add(R.id.main_fragment_container, fragment, getTag(position));
         } else {
-            ft.attach(fragment);
+            ft.show(fragment);
         }
 
         ft.commit();
